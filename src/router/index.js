@@ -32,6 +32,17 @@ import nestedRouter from './modules/nested'
 **/
 export const constantRouterMap = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
+  {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
@@ -253,7 +264,7 @@ export const asyncRouterMap = [
       {
         path: 'export-selected-excel',
         component: () => import('@/views/excel/selectExcel'),
-        name: 'EelectExcel',
+        name: 'SelectExcel',
         meta: { title: 'selectExcel' }
       },
       {
